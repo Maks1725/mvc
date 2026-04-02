@@ -39,9 +39,10 @@ int main(void) {
 
     Color colors[amt_waves];
     colors[0] = WHITE;
+    colors[0].a = main_color.a;
     for (int i = 1; i < amt_waves; ++i) {
         colors[i] = main_color;
-        colors[i].a *= (float)(amt_waves - i) / amt_waves - 1;
+        colors[i].a *= (float)(amt_waves - i) / (amt_waves - 1);
     }
     Color bg_wave_colors[2] = {main_color, main_color};
     bg_wave_colors[0].a *= 0.5;
@@ -52,11 +53,12 @@ int main(void) {
     SetConfigFlags(FLAG_WINDOW_TRANSPARENT);
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(width, height, "mvc");
+    SetTargetFPS(60);
     SetWindowMinSize(200, 200);
     SetWindowMaxSize(1920, 1080);
-    InitAudioDevice();
 
-    SetTargetFPS(60);
+    InitAudioDevice();
+    SetAudioStreamBufferSizeDefault(4096);
 
     while (!WindowShouldClose()) {
         if (IsFileDropped()) {

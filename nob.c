@@ -15,6 +15,7 @@ int main(int argc, char **argv) {
     nob_cmd_append(&cmd, SRC_DIR"main.c", SRC_DIR"config.c");
     nob_cmd_append(&cmd, "-o", BUILD_DIR"mvc");
     nob_cmd_append(&cmd, "-Wall", "-Wextra");
+    nob_cmd_append(&cmd, "-O3");
     nob_cmd_append(&cmd, "-lraylib", "-lm", "-lpthread", "-ldl", "-lrt", "-lX11");
 
     if (!nob_cmd_run(&cmd)) return 1;

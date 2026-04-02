@@ -4,7 +4,7 @@
 float volume = 0.5;
 
 // Main color
-Color main_color = VIOLET;
+Color main_color = {255, 0, 255, 127};
 
 // Background color
 Color bg_color = {0, 0, 0, 127};
